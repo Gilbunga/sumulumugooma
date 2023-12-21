@@ -29,17 +29,17 @@ addLayer("p", {
         11: {
             title: "Increase Money Gain by 1.25x",
             description: "Increase your money gain fr fr.",
-            cost: new Decimal(2),
+            cost: new Decimal(1),
         },
         12: {
             title: "Increase Money Gain by 2x",
             description: "Increase your money ong",
-            cost: new Decimal(5),
+            cost: new Decimal(3),
         },
         13: {
             title: "Decrease Prestige Points Cost",
-            description: "Decrease the cost of prestige points based on your money",
-            cost: new Decimal(15),
+            description: "warning: will mess up the 'x points until next prestige' component",
+            cost: new Decimal(10),
             effect() {
                 return player.points.add(1).pow(0.15)
             },
@@ -47,17 +47,17 @@ addLayer("p", {
         14: {
             title: "Increase Money Gain by 2x again",
             description: "Increase your money twofold",
-            cost: new Decimal(30),
+            cost: new Decimal(10),
         },
         15: {
             title: "Money boosts itself",
             description: "im going to struggle while coding this",
-            cost: new Decimal(75),
+            cost: new Decimal(20),
         },
         16: {
             title: "Increase previous upgrades effectiveness",
             description: "hooray",
-            cost: new Decimal(150),
+            cost: new Decimal(45),
         },
     },
 })
