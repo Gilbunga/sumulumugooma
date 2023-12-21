@@ -12,7 +12,7 @@ addLayer("p", {
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.5, // Prestige currency exponent
+    exponent: 0.95, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('p', 13)) mult = mult.times(upgradeEffect('p', 13))
@@ -43,6 +43,21 @@ addLayer("p", {
             effect() {
                 return player.points.add(1).pow(0.15)
             },
+        },
+        14: {
+            title: "Increase Money Gain by 2x again",
+            description: "Increase your money twofold",
+            cost: new Decimal(30),
+        },
+        15: {
+            title: "Money boosts itself",
+            description: "im going to struggle while coding this",
+            cost: new Decimal(75),
+        },
+        16: {
+            title: "Increase previous upgrades effectiveness",
+            description: "hooray",
+            cost: new Decimal(150),
         },
     },
 })
