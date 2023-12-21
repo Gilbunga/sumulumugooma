@@ -2,7 +2,8 @@ let modInfo = {
 	name: "The Upgrade Tree",
 	id: "goobertown",
 	author: "gilbunga",
-	pointsName: "Money",
+	pointsName: "points",
+	prestigepointsName: "prestige points",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
@@ -18,9 +19,10 @@ let VERSION = {
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v0.0</h3><br>
+	<h3>v0.1</h3><br>
 		- Started Project.<br>
-		- Added 12 Upgrades.`
+		- Added 9 Upgrades.<br>
+		- Major Bug Added.`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -36,7 +38,7 @@ function getStartPoints(){
 function canGenPoints(){
 	return true
 }
-
+var y = Math.random(2, 6);
 // Calculate points/sec!
 function getPointGen() {
 	if(!canGenPoints())
@@ -46,9 +48,14 @@ function getPointGen() {
 	if (hasUpgrade('p', 11)) gain = gain.times(1.25)
 	if (hasUpgrade('p', 12)) gain = gain.times(2)
 	if (hasUpgrade('p', 14)) gain = gain.times(2)
-	if (hasUpgrade('p', 16)) var x = 15
-		else var x = 20
-	if (hasUpgrade('p', 15)) gain = gain.plus(player.points / x)
+	if (hasUpgrade('p', 16)) var x = 45
+		else var x = 50
+	while (player.points < 10000) {
+		if (hasUpgrade('p', 15)) gain = gain.plus(player.points / x)
+	}
+	if (hasUpgrade('r', 17)) gain = gain.times(3)
+	if (hasUpgrade('r', 18)) gain = gain.times(7)
+	if (hasUpgrade('r', 19)) gain = gain.times(2)
 	return gain
 }
 
