@@ -2,7 +2,7 @@ let modInfo = {
 	name: "The JJT Tree",
 	id: "goobertown",
 	author: "gilbunga",
-	pointsName: "points",
+	pointsName: "Money",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
@@ -43,6 +43,8 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	if (hasUpgrade('p', 11)) gain = gain.times(1.25)
+	if (hasUpgrade('p', 12)) gain = gain.times(2)
 	return gain
 }
 

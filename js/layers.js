@@ -15,6 +15,7 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade('p', 13)) mult = mult.times(upgradeEffect('p', 13))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -24,5 +25,24 @@ addLayer("p", {
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true}
+    layerShown(){return true},    upgrades: {
+        11: {
+            title: "Increase Money Gain by 1.25x",
+            description: "Increase your money gain fr fr.",
+            cost: new Decimal(2),
+        },
+        12: {
+            title: "Increase Money Gain by 2x",
+            description: "Increase your money ong",
+            cost: new Decimal(5),
+        },
+        13: {
+            title: "Decrease Prestige Points Cost",
+            description: "Decrease the cost of prestige points based on your money",
+            cost: new Decimal(15),
+            effect() {
+                return player.points.add(1).pow(0.15)
+            },
+        },
+    },
 })
